@@ -17,6 +17,7 @@ pipeline {
 		stage('Prepare') {
 			steps {
 				bat 'SET Path=%PATH%;%AppData%\\npm;%AppData%\\npm\\node_modules;.\\node_modules'
+				bat 'git config --global core.longpaths true'
 				bat 'yarn install'
 			}
 		}
