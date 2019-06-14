@@ -29,8 +29,10 @@ pipeline {
 
 		stage('Test') {
 			steps {
-				bat 'dir'
-				bat 'yarn run test.cypress'
+				lock(resource: "compiler_${env.NODE_NAME}", inversePrecedence: true) {
+					bat 'dir'
+					bat 'yarn run test.cypress'
+				}
 			}
 		}
 	}
