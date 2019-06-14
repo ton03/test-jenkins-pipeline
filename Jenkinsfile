@@ -1,4 +1,11 @@
+stage 'Prepare'
+node {
+	bat 'npm install -g yarn'
+	bat 'yarn install'
+}
+
 stage 'Test'
 node {
-	bat 'echo Hello'
+	bat 'dir'
+	bat 'yarn test.cypress'
 }
