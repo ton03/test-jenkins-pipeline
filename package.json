@@ -1,0 +1,22 @@
+{
+  "name": "test-jenkins-pipeline",
+  "version": "1.0.0",
+  "description": "Test",
+  "main": "index.js",
+  "scripts": {
+    "test.cypress": "./node_modules/.bin/cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ton03/test-jenkins-pipeline.git"
+  },
+  "author": "Ton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ton03/test-jenkins-pipeline/issues"
+  },
+  "homepage": "https://github.com/ton03/test-jenkins-pipeline#readme",
+  "devDependencies": {
+    "cypress": "^3.3.1"
+  }
+}
