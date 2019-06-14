@@ -1,23 +1,23 @@
 {
   "name": "test-jenkins-pipeline",
-  "version": "1.0.0",
   "description": "Test",
+  "version": "1.0.0",
+  "author": "Ton",
   "main": "index.js",
   "scripts": {
-    "test.cypress": "concurrently \"cypress run\" --kill-others \"ng serve\" --success first"
+    "build": "webpack -p",
+    "start": "webpack-dev-server",
+    "test.cypress": "concurrently \"cypress run\" --kill-others \"yarn start\" --success first"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ton03/test-jenkins-pipeline.git"
   },
-  "author": "Ton",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ton03/test-jenkins-pipeline/issues"
-  },
-  "homepage": "https://github.com/ton03/test-jenkins-pipeline#readme",
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "cypress": "^3.3.1"
+    "cypress": "^3.3.1",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.1"
   }
 }

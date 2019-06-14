@@ -6,3 +6,7 @@ cypress/plugins
 cypress/screenshots
 cypress/support
 cypress/videos
+
+dist/main.js
+
+results/
