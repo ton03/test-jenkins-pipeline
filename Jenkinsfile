@@ -9,6 +9,10 @@ pipeline {
 		CI = 'true'
 	}
 
+	options {
+		disableConcurrentBuilds()
+	}
+
 	stages {
 		stage('Prepare') {
 			steps {
