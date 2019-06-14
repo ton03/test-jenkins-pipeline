@@ -13,20 +13,20 @@ pipeline {
 		stage('Prepare') {
 			steps {
 				bat 'SET Path=%PATH%;%AppData%\\npm;%AppData%\\npm\\node_modules;.\\node_modules'
-				bat 'npm i'
+				bat 'yarn install'
 			}
 		}
 
 		stage('Build') {
 			steps {
-				bat 'npm build'
+				bat 'yarn run build'
 			}
 		}
 
 		stage('Test') {
 			steps {
 				bat 'dir'
-				bat 'npm run test.cypress'
+				bat 'yarn run test.cypress'
 			}
 		}
 	}
