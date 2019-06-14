@@ -6,7 +6,7 @@ pipeline {
 	stages {
 		stage('Prepare') {
 			steps {
-				bat 'SET Path=%PATH%;%AppData%\npm;%AppData%\npm\node_modules'
+				bat 'SET Path=%PATH%;%AppData%\\npm;%AppData%\\npm\\node_modules'
 				bat 'npm install -g yarn'
 				bat 'yarn install'
 			}
