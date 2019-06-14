@@ -4,7 +4,7 @@
   "description": "Test",
   "main": "index.js",
   "scripts": {
-    "test.cypress": "concurrently \"cypress run\" --kill-others \"ngserve\" --success first"
+    "test.cypress": "concurrently \"cypress run\" --kill-others \"ng serve\" --success first"
   },
   "repository": {
     "type": "git",
