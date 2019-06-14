@@ -4,7 +4,7 @@
   "description": "Test",
   "main": "index.js",
   "scripts": {
-    "test.cypress": "./node_modules/.bin/cypress run"
+    "test.cypress": "concurrently \"cypress run\" --kill-others \"ngserve\" --success first"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ton03/test-jenkins-pipeline#readme",
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "cypress": "^3.3.1"
   }
 }

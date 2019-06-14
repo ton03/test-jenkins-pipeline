@@ -1,13 +1,25 @@
 pipeline {
 	agent any
+
+	tools {
+		nodejs "node"
+	}
+
 	environment {
 		CI = 'true'
 	}
+
 	stages {
 		stage('Prepare') {
 			steps {
-				bat 'SET Path=%PATH%;%AppData%\\npm;%AppData%\\npm\\node_modules'
-				bat 'npm install'
+				bat 'SET Path=%PATH%;%AppData%\\npm;%AppData%\\npm\\node_modules;.\\node_modules'
+				bat 'npm i'
+			}
+		}
+
+		stage('Build') {
+			steps {
+				bat 'npm build'
 			}
 		}
 
@@ -16,6 +28,12 @@ pipeline {
 				bat 'dir'
 				bat 'npm run test.cypress'
 			}
+		}
+	}
+
+	post {
+		always {
+			junit 'results/cypress-report.xml'
 		}
 	}
 }
