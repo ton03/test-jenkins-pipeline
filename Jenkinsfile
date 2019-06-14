@@ -7,15 +7,14 @@ pipeline {
 		stage('Prepare') {
 			steps {
 				bat 'SET Path=%PATH%;%AppData%\\npm;%AppData%\\npm\\node_modules'
-				bat 'npm install -g yarn'
-				bat 'yarn install'
+				bat 'npm install'
 			}
 		}
 
 		stage('Test') {
 			steps {
 				bat 'dir'
-				bat 'yarn test.cypress'
+				bat 'npm run test.cypress'
 			}
 		}
 	}
