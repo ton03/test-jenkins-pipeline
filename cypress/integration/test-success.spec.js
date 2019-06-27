@@ -3,7 +3,7 @@ describe('Test', () => {
     expect(true).to.equal(true);
   });
 
-  it('Another success', () => {
+  it('Another One', () => {
     expect(1).to.equal(1);
   });
 });
