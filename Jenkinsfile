@@ -17,6 +17,7 @@ pipeline {
 		stage('Prepare') {
 			steps {
 				bat 'SET Path=%PATH%;%AppData%\\npm;%AppData%\\npm\\node_modules;.\\node_modules'
+				bat 'git config --global core.longpaths true'
 				bat 'yarn install'
 			}
 		}
@@ -29,8 +30,10 @@ pipeline {
 
 		stage('Test') {
 			steps {
-				bat 'dir'
-				bat 'yarn run test.cypress'
+				lock(resource: "compiler_${env.NODE_NAME}", inversePrecedence: true) {
+					bat 'dir'
+					bat 'yarn run test.cypress'
+				}
 			}
 		}
 	}
