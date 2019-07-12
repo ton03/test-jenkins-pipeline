@@ -10,10 +10,9 @@ pipeline {
 	}
 
 	options {
-		ansiColor('xterm')
 		disableConcurrentBuilds()
 		disableResume()
-		lock resource: 'build-lock'
+		// lock resource: 'build-lock'
 		parallelsAlwaysFailFast()
 		quietPeriod(10)
 		rateLimitBuilds(throttle: [count: 60, durationName: 'hour', userBoost: true])
@@ -41,25 +40,18 @@ pipeline {
 			parallel {
 				stage('Test A') {
 					steps {
-						// bat 'yarn run test.cypress'
-						bat 'ping localhost -n 5'
-						// junit 'results/cypress-report.xml'
+						lock(resource: "compiler_${env.NODE_NAME}", inversePrecedence: true) {
+							bat 'yarn run test.cypress'
+							junit 'results/cypress-report.xml'
+						}
 					}
 				}
 				stage('Test B') {
 					steps {
-						// bat 'yarn run test.cypress'
-						bat 'ping localhost -n 10'
-						// junit 'results/cypress-report.xml'
+						bat 'ping localhost -n 20'
 					}
 				}
 			}
 		}
 	}
-
-	// post {
-	// 	always {
-	// 		junit 'results/cypress-report.xml'
-	// 	}
-	// }
 }
