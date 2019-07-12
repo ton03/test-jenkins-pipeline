@@ -38,7 +38,7 @@ pipeline {
 		stage('Test') {
 			failFast true
 			parallel {
-				stage('Test A') {
+				stage('Test - Cypress') {
 					steps {
 						lock(resource: "compiler_${env.NODE_NAME}", inversePrecedence: true) {
 							bat 'yarn run test.cypress'
@@ -46,9 +46,9 @@ pipeline {
 						}
 					}
 				}
-				stage('Test B') {
+				stage('Test - Ping') {
 					steps {
-						bat 'ping localhost -n 20'
+						bat 'ping localhost -n 30'
 					}
 				}
 			}
