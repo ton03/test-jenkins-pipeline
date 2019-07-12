@@ -1,5 +1,5 @@
 pipeline {
-	agent any
+	agent none
 
 	tools {
 		nodejs "node"
@@ -12,6 +12,8 @@ pipeline {
 	options {
 		disableConcurrentBuilds()
 		lock resource: 'build-lock'
+		timestamps()
+		parallelsAlwaysFailFast()
 	}
 
 	stages {
