@@ -36,14 +36,16 @@ pipeline {
 			parallel {
 				stage('Test A') {
 					steps {
-						bat 'yarn run test.cypress'
-						junit 'results/cypress-report.xml'
+						// bat 'yarn run test.cypress'
+						bat 'timeout 5'
+						// junit 'results/cypress-report.xml'
 					}
 				}
 				stage('Test B') {
 					steps {
-						bat 'yarn run test.cypress'
-						junit 'results/cypress-report.xml'
+						// bat 'yarn run test.cypress'
+						bat 'timeout 10'
+						// junit 'results/cypress-report.xml'
 					}
 				}
 			}
