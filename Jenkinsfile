@@ -10,10 +10,15 @@ pipeline {
 	}
 
 	options {
+		ansiColor('xterm')
 		disableConcurrentBuilds()
+		disableResume()
 		lock resource: 'build-lock'
-		timestamps()
 		parallelsAlwaysFailFast()
+		quietPeriod(10)
+		rateLimitBuilds(throttle: [count: 60, durationName: 'hour', userBoost: true])
+		timeout(time: 1, unit: 'HOURS')
+		timestamps()
 	}
 
 	stages {
