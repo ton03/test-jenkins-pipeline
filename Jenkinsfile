@@ -1,14 +1,6 @@
 pipeline {
 	agent any
 
-	tools {
-		nodejs "node"
-	}
-
-	environment {
-		CI = 'true'
-	}
-
 	options {
 		disableConcurrentBuilds()
 	}
@@ -28,19 +20,16 @@ pipeline {
 			}
 		}
 
-		stage('Test') {
-			steps {
-				lock(resource: "compiler_${env.NODE_NAME}", inversePrecedence: true) {
-					bat 'dir'
-					bat 'yarn run test.cypress'
+		lock(resource: "compiler_${env.NODE_NAME}", inversePrecedence: true) {
+			node('Test') {
+				stage('Test') {
+					steps {
+						bat 'dir'
+						bat 'yarn run test.cypress'
+						junit 'results/cypress-report.xml'
+					}
 				}
 			}
-		}
-	}
-
-	post {
-		always {
-			junit 'results/cypress-report.xml'
 		}
 	}
 }
