@@ -32,11 +32,18 @@ pipeline {
 		}
 
 		stage('Test') {
-			steps {
-				// lock(resource: "compiler_${env.NODE_NAME}", inversePrecedence: true) {
-					bat 'dir'
-					bat 'yarn run test.cypress'
-				// }
+			failFast true
+			parallel {
+				stage('Test A') {
+					steps {
+						bat 'yarn run test.cypress'
+					}
+				}
+				stage('Test B') {
+					steps {
+						bat 'yarn run test.cypress'
+					}
+				}
 			}
 		}
 	}
