@@ -37,14 +37,14 @@ pipeline {
 				stage('Test A') {
 					steps {
 						// bat 'yarn run test.cypress'
-						bat 'timeout 5'
+						bat 'ping localhost -n 5'
 						// junit 'results/cypress-report.xml'
 					}
 				}
 				stage('Test B') {
 					steps {
 						// bat 'yarn run test.cypress'
-						bat 'timeout 10'
+						bat 'ping localhost -n 10'
 						// junit 'results/cypress-report.xml'
 					}
 				}
