@@ -37,20 +37,22 @@ pipeline {
 				stage('Test A') {
 					steps {
 						bat 'yarn run test.cypress'
+						junit 'results/cypress-report.xml'
 					}
 				}
 				stage('Test B') {
 					steps {
 						bat 'yarn run test.cypress'
+						junit 'results/cypress-report.xml'
 					}
 				}
 			}
 		}
 	}
 
-	post {
-		always {
-			junit 'results/cypress-report.xml'
-		}
-	}
+	// post {
+	// 	always {
+	// 		junit 'results/cypress-report.xml'
+	// 	}
+	// }
 }
