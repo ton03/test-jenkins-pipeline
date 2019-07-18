@@ -14,7 +14,7 @@ pipeline {
 	}
 
 	options {
-		disableConcurrentBuilds()
+		// disableConcurrentBuilds()
 		disableResume()
 		// lock resource: 'build-lock'
 		parallelsAlwaysFailFast()
